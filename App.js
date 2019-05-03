@@ -42,17 +42,19 @@ export default class App extends Component<Props> {
      * @param {Object} data
      * @returns {null}*/
     sendDataToReactNative(data){
-      DocumentPicker.show({
-            filetype: [DocumentPickerUtil.allFiles()],
-          },(error,res) => {
-            // Android
-            console.log(
-               res.uri,
-               res.type, // mime type
-               res.fileName,
-               res.fileSize
-            );
-          });
+      if (Platform.OS === 'ios') {
+        DocumentPicker.show({
+              filetype: [DocumentPickerUtil.allFiles()],
+            },(error,res) => {
+              // Android
+              console.log(
+                 res.uri,
+                 res.type, // mime type
+                 res.fileName,
+                 res.fileSize
+              );
+            });        
+      }
       console.log(data);
     };
 
@@ -98,7 +100,7 @@ export default class App extends Component<Props> {
           source={{ uri: "http://10.8.24.203:8888/" }}
           onMessage={event => {
             alert(event.nativeEvent.data);
-            //this.bridge(direction.WV, event.nativeEvent.data);
+            this.bridge(direction.WV, event.nativeEvent.data);
             this.bridge(direction.RN, event.nativeEvent.data);
           }}
         />
