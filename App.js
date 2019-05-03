@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View} from 'react-native';
 import { WebView } from "react-native-webview";
 import { DocumentPicker, DocumentPickerUtil } from 'react-native-document-picker';
+import FilePickerManager from 'react-native-file-picker';
+
 
 /* set Enums for direction: RN or WV*/
 const direction = {
@@ -55,6 +57,21 @@ export default class App extends Component<Props> {
               );
             });
       } else {
+        FilePickerManager.showFilePicker(null, (response) => {
+            console.log('Response = ', response);
+
+            if (response.didCancel) {
+              console.log('User cancelled file picker');
+            }
+            else if (response.error) {
+              console.log('FilePickerManager Error: ', response.error);
+            }
+            else {
+              // this.setState({
+              //   file: response
+              // });
+            }
+          });
         console.log(data);
       }
     };

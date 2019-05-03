@@ -3,6 +3,7 @@ package com.dealsmobile;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.filepicker.FilePickerPackage;
 import com.reactnativedocumentpicker.ReactNativeDocumentPicker;
 import com.reactnativecommunity.webview.RNCWebViewPackage;
 import com.facebook.react.ReactNativeHost;
@@ -26,7 +27,9 @@ public class MainApplication extends Application implements ReactApplication {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
             new ReactNativeDocumentPicker(),
-            new RNCWebViewPackage()
+            new RNCWebViewPackage(),
+            new FilePickerPackage()
+
       );
     }
 
