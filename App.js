@@ -53,9 +53,10 @@ export default class App extends Component<Props> {
                  res.fileName,
                  res.fileSize
               );
-            });        
+            });
+      } else {
+        console.log(data);
       }
-      console.log(data);
     };
 
     /**
